@@ -34,15 +34,18 @@ public RedisTemplate<String,Object> getRedisTemplate(){
 
     if(!redisUser.isEmpty() && !redisPassword.isEmpty()){
         config.setUsername(redisUser); 
-        config.setUsername(redisUser);
+        config.setPassword(redisPassword);
     }
 
     config.setDatabase(0);
 
-    final JedisClientConfiguration jdisClient = JedisClientConfiguration.builder().build();
-    final JedisConnectionFactory jedisFac = new JedisConnectionFactory(config, jdisClient);
-    jedisFac.afterPropertiesSet();
-    final RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>(); 
+    final JedisClientConfiguration jedisClient = JedisClientConfiguration.builder().build();
+
+    //setting up connection with redis database
+   final JedisConnectionFactory jedisFac = new JedisConnectionFactory(config, jedisClient);
+   //initialize and validate connection factory
+   jedisFac.afterPropertiesSet();
+   final RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>(); 
 
     //Associate to Redis connection 
     redisTemplate.setConnectionFactory(jedisFac);

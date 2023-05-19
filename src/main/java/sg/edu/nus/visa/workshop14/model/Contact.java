@@ -1,5 +1,6 @@
 package sg.edu.nus.visa.workshop14.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Random;
@@ -14,7 +15,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
-public class Contact{
+public class Contact implements Serializable{
     @NotNull(message ="Name cannot be empty")
     @Size(min=3, max=64, message ="Name should be between 3 to 64 characters ")
     private String name; 
