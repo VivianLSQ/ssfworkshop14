@@ -7,11 +7,11 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>List of Contact</h1>
+    <h1>List of Contacts</h1>
     <tr th:each="contact: ${contacts}">
       <td>
         <a
-          data-th-href="@{'/contact/' + ${contact.id}}"  
+          data-th-href="@{'/contact/' + ${contact.id}}"
           data-th-text="${contact.id}"
         ></a
         ><br />

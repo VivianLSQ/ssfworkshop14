@@ -34,7 +34,11 @@ public class ContactsRedis {
     }
 
     public List<Contact> getAllContacts(Model model){
-        return template.opsForHash().values(CONTACT_LIST+"_HASH").stream().filter(Contact.class::isInstance).map(Contact.class::cast).collect(Collectors.toList()); 
+        return template.opsForHash().values(CONTACT_LIST+"_HASH")
+        .stream()
+        .filter(Contact.class::isInstance)
+        .map(Contact.class::cast)
+        .collect(Collectors.toList()); 
         //Data would be converted to a stream, then we want to convert it back to a list 
     }
 
